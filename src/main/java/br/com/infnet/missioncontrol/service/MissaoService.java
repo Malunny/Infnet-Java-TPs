@@ -16,13 +16,13 @@ public class MissaoService {
     public MissaoService(TesteService testeService) {
         this.testeService = testeService;
         missoes.add(new Missao(1L, "Aurora Lunar", "Lua", 2028,
-                StatusMissao.PLANEJADA, new ArrayList<>(List.of("Lia", "Mateus"))));
+                StatusMissao.PLANEJADA, new ArrayList<>(List.of("Lia", "Mateus")),"teste@teste.com"));
 
         missoes.add(new Missao(2L, "Vigia de Marte", "Marte", 2025,
-                StatusMissao.EM_ANDAMENTO, new ArrayList<>(List.of("Nina"))));
+                StatusMissao.EM_ANDAMENTO, new ArrayList<>(List.of("Nina")),"teste@teste.com"));
 
         missoes.add(new Missao(3L, "Sonda Europa", "Europa", 2022,
-                StatusMissao.CONCLUIDA, new ArrayList<>()));
+                StatusMissao.CONCLUIDA, new ArrayList<>(),"teste@teste.com"));
     }
 
     public List<Missao> listarTodas() {

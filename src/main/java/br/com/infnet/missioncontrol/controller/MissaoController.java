@@ -4,6 +4,7 @@ import br.com.infnet.missioncontrol.model.ErrorResponse;
 import br.com.infnet.missioncontrol.model.Missao;
 import br.com.infnet.missioncontrol.model.StatusMissao;
 import br.com.infnet.missioncontrol.service.MissaoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ public class MissaoController {
             return missaoService.filtrarPorStatus(status);
     }
     @PostMapping
-    public ResponseEntity salvar(@RequestBody Missao missao) {
+    public ResponseEntity salvar(@Valid  @RequestBody Missao missao) {
         missaoService.adicionar(missao);
         return ResponseEntity.status(HttpStatus.CREATED).body(missao);
 
