@@ -49,8 +49,8 @@ public class AstronautaController extends BaseController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/filtrar/status/{statusAstronauta}")
-    public ResponseEntity pegarFiltradoPorStatus(@PathVariable StatusAstronauta statusAstronauta) {
+    @GetMapping(params = "status")
+    public ResponseEntity pegarFiltradoPorStatus(@RequestParam(name = "status", required = true) StatusAstronauta statusAstronauta) {
         var astronautas = astronautaService.pegarFiltradoPorStatus(statusAstronauta);
 
         return ResponseEntity.ok(astronautas);
