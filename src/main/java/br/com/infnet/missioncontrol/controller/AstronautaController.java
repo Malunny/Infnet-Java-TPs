@@ -1,6 +1,7 @@
 package br.com.infnet.missioncontrol.controller;
 
 import br.com.infnet.missioncontrol.model.Astronauta;
+import br.com.infnet.missioncontrol.model.StatusAstronauta;
 import br.com.infnet.missioncontrol.service.AstronautaService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,13 @@ public class AstronautaController {
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/filtrar/status/{statusAstronauta}")
+    public ResponseEntity pegarFiltradoPorStatus(@PathVariable StatusAstronauta statusAstronauta) {
+        var astronautas = astronautaService.pegarFiltradoPorStatus(statusAstronauta);
+
+        return ResponseEntity.ok(astronautas);
     }
 
     @GetMapping

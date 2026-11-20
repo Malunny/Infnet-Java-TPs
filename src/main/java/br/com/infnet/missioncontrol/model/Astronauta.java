@@ -29,4 +29,17 @@ public class Astronauta {
         anosExperiencia = astronauta.anosExperiencia;
         status = astronauta.status;
     }
+
+    public Astronauta() {
+
+    }
+
+    public Astronauta(int id, String nome, String pais, int idade, int anosExperiencia, StatusAstronauta status) {
+        this.id = id;
+        this.nome = nome;
+        this.pais = pais;
+        this.idade = idade;
+        this.anosExperiencia = anosExperiencia;
+        this.status = status;
+    }
 }

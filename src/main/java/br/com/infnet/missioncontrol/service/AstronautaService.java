@@ -1,6 +1,7 @@
 package br.com.infnet.missioncontrol.service;
 
 import br.com.infnet.missioncontrol.model.Astronauta;
+import br.com.infnet.missioncontrol.model.StatusAstronauta;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,13 @@ import java.util.Optional;
 
 @Service
 public class AstronautaService {
-    private Collection<Astronauta> astronautas = new ArrayList<>();
+    private Collection<Astronauta> astronautas;
+
+    public AstronautaService() {
+        this.astronautas = new ArrayList<>();
+        this.astronautas.add(new Astronauta(1, "Jhonny", "Brasil", 19, 1, StatusAstronauta.DISPONIVEL));
+        this.astronautas.add(new Astronauta(1, "Julian", "Peru", 23, 2, StatusAstronauta.EM_MISSAO));
+    }
 
     public void cadastrarAstronauta(@NonNull Astronauta astronauta) {
         var id = astronautas.size() + 1;
@@ -41,6 +48,15 @@ public class AstronautaService {
             }
         }
         return null;
+    }
+
+    public Collection<Astronauta> pegarFiltradoPorStatus(StatusAstronauta statusAstronauta) {
+        var astronautasFiltrados = astronautas
+                .stream()
+                .filter(astronauta -> astronauta.getStatus() == statusAstronauta)
+                .toList();
+
+        return astronautasFiltrados;
     }
 
     public Boolean deletarPorId(long id) {
