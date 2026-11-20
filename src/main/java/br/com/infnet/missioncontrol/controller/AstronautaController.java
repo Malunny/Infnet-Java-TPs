@@ -18,8 +18,15 @@ public class AstronautaController extends BaseController {
     }
 
     @PostMapping
-    public void cadastrarAstronauta(@Valid @RequestBody Astronauta astronauta) {
+    public ResponseEntity cadastrarAstronauta(@RequestBody Astronauta astronauta) {
+        var validacaoAstronauta = astronautaService.validarAstronauta(astronauta, true);
+
+        if (!validacaoAstronauta.isOk())
+            return ResponseEntity.badRequest().body(validacaoAstronauta);
+
         astronautaService.cadastrarAstronauta(astronauta);
+
+        return ResponseEntity.ok(astronauta);
     }
 
     @DeleteMapping("/{id}")
@@ -40,7 +47,13 @@ public class AstronautaController extends BaseController {
     }
 
     @PutMapping
-    public ResponseEntity atualizarPorId(@Valid @RequestBody Astronauta astronauta) {
+    public ResponseEntity atualizarPorId(@RequestBody Astronauta astronauta) {
+        var validacaoAstronauta = astronautaService.validarAstronauta(astronauta, false);
+
+        if (!validacaoAstronauta.isOk())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(validacaoAstronauta);
+
         var atualizado = astronautaService.atualizarAstronauta(astronauta);
 
         if (!atualizado)

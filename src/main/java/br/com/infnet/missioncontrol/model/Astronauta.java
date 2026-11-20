@@ -15,8 +15,10 @@ public class Astronauta {
     private String nome;
     @NotBlank(message = "O país do astronauta não pode ser vazio.")
     private String pais;
+    @Min(18)
     @NotNull(message = "A idade do astronauta precisa ser especificada.")
     private int idade;
+    @Min(0)
     @NotNull(message = "Os anos de experiência do astronauta precisam ser especificada.")
     private int anosExperiencia;
     @NotNull(message = "O status do astronauta precisa ser especificado.")

@@ -10,5 +10,4 @@ import org.springframework.web.bind.annotation.GetMapping;
 @AllArgsConstructor
 public class ErrorResponse {
     private String message;
-
 }
