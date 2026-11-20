@@ -29,6 +29,16 @@ public class AstronautaController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping
+    public ResponseEntity atualizarPorId(@Valid @RequestBody Astronauta astronauta) {
+        var atualizado = astronautaService.atualizarAstronauta(astronauta);
+
+        if (!atualizado)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping
     public ResponseEntity pegarTodos() {
         var astronautas = astronautaService.pegarTodos();

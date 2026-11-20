@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Astronauta {
-    @Min(1)
     private long id;
     @NotBlank(message = "O nome do astronauta não pode ser vazio.")
     private String nome;
@@ -22,4 +21,12 @@ public class Astronauta {
     private int anosExperiencia;
     @NotNull(message = "O status do astronauta precisa ser especificado.")
     private StatusAstronauta status;
+
+    public void atualizarDados(Astronauta astronauta) {
+        nome = astronauta.nome;
+        pais = astronauta.pais;
+        idade = astronauta.idade;
+        anosExperiencia = astronauta.anosExperiencia;
+        status = astronauta.status;
+    }
 }

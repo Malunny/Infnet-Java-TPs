@@ -1,6 +1,7 @@
 package br.com.infnet.missioncontrol.service;
 
 import br.com.infnet.missioncontrol.model.Astronauta;
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +12,22 @@ import java.util.Optional;
 public class AstronautaService {
     private Collection<Astronauta> astronautas = new ArrayList<>();
 
-    public void cadastrarAstronauta(Astronauta astronauta) {
+    public void cadastrarAstronauta(@NonNull Astronauta astronauta) {
+        var id = astronautas.size() + 1;
+
+        astronauta.setId(id);
+
         astronautas.add(astronauta);
+    }
+
+    public boolean atualizarAstronauta(@NonNull Astronauta astronauta) {
+        var astronautaGuardado = pegarPorId(astronauta.getId());
+
+        if (astronautaGuardado == null)
+            return false;
+
+        astronautaGuardado.atualizarDados(astronauta);
+        return true;
     }
 
     public Collection<Astronauta> pegarTodos() {
