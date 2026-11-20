@@ -19,6 +19,16 @@ public class AstronautaController {
         astronautaService.cadastrarAstronauta(astronauta);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity remover(@PathVariable long id) {
+        var deletou = astronautaService.deletarPorId(id);
+
+        if (deletou)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping
     public ResponseEntity pegarTodos() {
         var astronautas = astronautaService.pegarTodos();

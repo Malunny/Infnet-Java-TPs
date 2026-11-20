@@ -27,4 +27,15 @@ public class AstronautaService {
         }
         return null;
     }
+
+    public Boolean deletarPorId(long id) {
+        var astronauta = pegarPorId(id);
+
+        if (astronauta == null)
+            return false;
+
+        astronautas.remove(astronauta);
+
+        return true;
+    }
 }
