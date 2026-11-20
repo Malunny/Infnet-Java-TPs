@@ -18,8 +18,9 @@ public class AstronautaService {
 
     public AstronautaService() {
         this.astronautas = new ArrayList<>();
-        cadastrarAstronauta(new Astronauta(1, "Jhonny", "Brasil", 19, 1, StatusAstronauta.DISPONIVEL));
-        cadastrarAstronauta(new Astronauta(2, "Julian", "Peru", 23, 2, StatusAstronauta.EM_MISSAO));
+        cadastrarAstronauta(new Astronauta(1, "Ana Silva", "Brasil", 34, 8, StatusAstronauta.DISPONIVEL));
+        cadastrarAstronauta(new Astronauta(2, "John Carter", "Estados Unidos", 41, 15, StatusAstronauta.EM_MISSAO));
+        cadastrarAstronauta(new Astronauta(3, "Mei Lin", "China", 29, 5, StatusAstronauta.DISPONIVEL));
     }
 
     public ValidationResponse validarAstronauta(@NotNull Astronauta astronauta, boolean estaCadastrando) {
