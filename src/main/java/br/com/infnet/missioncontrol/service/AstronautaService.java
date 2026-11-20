@@ -16,7 +16,7 @@ public class AstronautaService {
     public AstronautaService() {
         this.astronautas = new ArrayList<>();
         this.astronautas.add(new Astronauta(1, "Jhonny", "Brasil", 19, 1, StatusAstronauta.DISPONIVEL));
-        this.astronautas.add(new Astronauta(1, "Julian", "Peru", 23, 2, StatusAstronauta.EM_MISSAO));
+        this.astronautas.add(new Astronauta(2, "Julian", "Peru", 23, 2, StatusAstronauta.EM_MISSAO));
     }
 
     public void cadastrarAstronauta(@NonNull Astronauta astronauta) {

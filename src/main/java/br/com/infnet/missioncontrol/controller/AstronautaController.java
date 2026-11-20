@@ -31,7 +31,7 @@ public class AstronautaController extends BaseController {
 
         var deletou = astronautaService.deletarPorId(id);
 
-        if (deletou)
+        if (!deletou)
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(new ErrorResponse("Não encontrado astronauta com tal id."));
